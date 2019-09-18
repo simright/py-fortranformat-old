@@ -300,13 +300,14 @@ def _compose_float_string(w, e, d, state, val, ftype):
                 mag = mag + 1
             assert(low(mag, d) <= tmp < high(mag, d))
 
-            # In python2, (None < 0) is ok, but it is not ok in python 3,
-            # so this change can let the program run on python3 when e is None.
-            # However, I am not sure if it makes sense that the variable e can be a None type.
-            if (e is None) or e < 0:
+            # In python2, (None < 0) is ok, but it is not ok in python 3
+            if e is None:
+                nb = 4
+            elif e < 0:
                 nb = 4
             else:
                 nb = e + 2
+                
             ftype = 'F'
             w = w - nb
             if tmp == 0.0:
