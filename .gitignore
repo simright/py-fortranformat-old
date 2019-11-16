@@ -1,4 +1,5 @@
 .idea/
 *.pyc
+fortran_format.egg-info/
 
 
