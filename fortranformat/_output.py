@@ -511,8 +511,10 @@ def _output_float(w, d, e, state, ft, buff, sign_bit, zero_flag, ndigits, edigit
         w = w - nblanks
         nblanks = 0
     # Check value fits in specified width
-    if (nblanks < 0) or (edigits == -1): 
+    if (nblanks < -1) or (edigits == -1): 
         return '*' * w
+    elif (nblanks == -1):
+        expchar = ""
     # See if we have space for a zero before the decimal point
     if (nbefore == 0) and (nblanks > 0):
         leadzero = True
